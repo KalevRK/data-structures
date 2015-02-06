@@ -23,16 +23,19 @@ treeMethods.contains = function(target){
     return true;
   }
   else {
-    _.each(this.children, function(element) {
-      debugger;
-      element.contains(target);
-    });
+    for (var i = 0; i < this.children.length; i++) {
+      if (this.children[i].contains(target)) {
+        return true;
+      }
+    }
   }
   return false;
-
 };
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+// Best Case: O(1)
+// Average Case: O(n)
+// Worst Case: O(n)
