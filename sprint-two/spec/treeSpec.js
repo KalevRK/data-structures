@@ -41,4 +41,20 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should have children aware of their parent', function() {
+    tree.addChild(5);
+    expect(tree.children[0].parent.value).to.equal(undefined);
+    tree.children[0].addChild(27);
+    expect(tree.children[0].children[0].parent.value).to.equal(5);
+  });
+
+  it('should break parent child relationships', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(27);
+    tree.children[0].addChild(12);
+    var target = tree.children[0].children[1].removeFromParent();
+    expect(_.contains(tree.children[0].children, target)).to.equal(false);
+    expect(target.parent).to.equal(null);
+  });
+
 });
