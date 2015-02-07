@@ -1,6 +1,16 @@
 describe('tree', function() {
   var tree;
 
+  var Callback = function() {
+    var results = [];
+    var fn = function(element) {
+      results.push(element);
+    }
+    fn.results = results;
+
+    return fn;
+  };
+
   beforeEach(function() {
     tree = Tree();
   });
@@ -56,5 +66,16 @@ describe('tree', function() {
     expect(_.contains(tree.children[0].children, target)).to.equal(false);
     expect(target.parent).to.equal(null);
   });
+
+  it('should traverse tree and invoke callback for each node', function() {
+    var callback = Callback();
+    tree.addChild(5);
+    tree.children[0].addChild(27);
+    tree.children[0].addChild(12);
+    tree.children[0].traverse(callback);
+    expect(callback.results).to.eql([5,27,12]);
+  });
+
+
 
 });

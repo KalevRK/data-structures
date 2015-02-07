@@ -15,6 +15,7 @@ treeMethods.addChild = function(value){
   node.parent = this;
 };
 
+// O(n)
 treeMethods.removeFromParent = function() {
   for (var i=0; i<this.parent.children.length; i++) {
     if (this.parent.children[i] === this) {
@@ -42,6 +43,14 @@ treeMethods.contains = function(target){
     }
   }
   return false;
+};
+
+// O(n)
+treeMethods.traverse = function(callback) {
+  callback(this.value);
+  _.each(this.children, function(child) {
+    child.traverse(callback);
+  });
 };
 
 
