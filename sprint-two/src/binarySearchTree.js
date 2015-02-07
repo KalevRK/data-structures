@@ -6,6 +6,7 @@ var BinarySearchTree = function(value){
   return tree;
 };
 
+// O(log n)
 BinarySearchTree.prototype.insert = function(value) {
   if (value <= this.value) {
     if (this.left === null) {
@@ -22,6 +23,7 @@ BinarySearchTree.prototype.insert = function(value) {
   }
 };
 
+// O(log n)
 BinarySearchTree.prototype.contains = function(value) {
   if (value === this.value) {
     return true;
@@ -37,6 +39,7 @@ BinarySearchTree.prototype.contains = function(value) {
   return false;
 };
 
+// O(n)
 BinarySearchTree.prototype.depthFirstLog = function (callback) {
   callback(this.value);
   if (this.left !== null) {
@@ -48,6 +51,7 @@ BinarySearchTree.prototype.depthFirstLog = function (callback) {
 };
 
 //worth some hi-chews on completion
+// O(n)
 BinarySearchTree.prototype.breadthFirstLog = function(callback){
   var results = [this];
 
@@ -69,12 +73,16 @@ BinarySearchTree.prototype.breadthFirstLog = function(callback){
   };
 
   processLevel([this]);
-}
+};
+
+BinarySearchTree.prototype.findMinMaxDepth = function() {
+
+};
 
 //worth lots of hi-chews
 BinarySearchTree.prototype.rebalanceTree = function(){
 
-}
+};
 /*
  * Complexity: What is the time complexity of the above functions?
  */
