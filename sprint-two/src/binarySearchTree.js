@@ -49,7 +49,26 @@ BinarySearchTree.prototype.depthFirstLog = function (callback) {
 
 //worth some hi-chews on completion
 BinarySearchTree.prototype.breadthFirstLog = function(callback){
+  var results = [this];
 
+  var processLevel = function(nodes) {
+    if (nodes.length === 0) {
+      _.each(results, function(node) {
+        callback(node.value);
+      });
+    } else {
+      var childNodes= [];
+      _.each(nodes, function(node) {
+        node.left && childNodes.push(node.left);
+        node.right && childNodes.push(node.right);
+        node.left && results.push(node.left);
+        node.right && results.push(node.right);
+      });
+      processLevel(childNodes);
+    }
+  };
+
+  processLevel([this]);
 }
 
 //worth lots of hi-chews
