@@ -81,7 +81,13 @@ BinarySearchTree.prototype.findMinMaxDepth = function() {
 
 //worth lots of hi-chews
 BinarySearchTree.prototype.rebalanceTree = function(){
-
+  // Plan of action:
+  // Take in an unbalanced tree
+  // Iterate through tree and retrieve all the values
+  // Sort all values
+  // Find midpoint of set of values
+  // Add node with value of midpoint to balanced tree
+  // Repeat on each half of set of values
 };
 /*
  * Complexity: What is the time complexity of the above functions?
